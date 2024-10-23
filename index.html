@@ -18,6 +18,7 @@
 	<link rel="icon" type="image/png" href="icons/icon-512.png">
 
 	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/tonweb@0.0.60/dist/tonweb.min.js" defer></script>
 	<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 
 
@@ -26,6 +27,17 @@
  
 <body>
 
+	<script>
+        // ページが完全に読み込まれた後に実行する
+        window.addEventListener('load', () => {
+            if (typeof TonWeb !== 'undefined') {
+                const tonweb = new TonWeb();
+                console.log('TonWeb successfully initialized:', tonweb);
+            } else {
+                console.error('TonWeb is not defined');
+            }
+        });
+    </script>
 	
 
 <script>

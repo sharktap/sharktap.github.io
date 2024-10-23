@@ -59,20 +59,43 @@ runtime.callFunction("restoreTON");
 	async Sdk_Event6_Act1(runtime, localVars)
 	{
 
-		
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+
 		const contractAddress = 'EQDGxETg0oyRuVhwZiXk-bjR1UwAUn4LqUSaXEa1w3yDbZSO';
-		const itemPrice = "23000000"; // TON価格
+		const itemPrice = 23000000; // TON価格
+
+		// BuyItemメッセージをエンコードする関数
+		function createBuyItemPayload(amount) {
+			const cell = new tonweb.boc.Cell();
+			cell.bits.writeUint(0, 32);  // メッセージID (BuyItem関数用)
+			cell.bits.writeCoins(amount); // 金額 (ナノTON)
+
+			// CellをBase64エンコードして返す
+			return cell.toBoc().toString('base64');
+		}
+
+
 
 		// コントラクトに0.023 TONを送信してアイテムを購入
-			try {
-				const transaction = {
-					to: contractAddress,           // コントラクトのアドレス
-					value: itemPrice,      // 商品の価格 (ナノTON)
-					stateInit: null,
-					bounce: true,
-				};
+	try {
+		const payload = createBuyItemPayload(itemPrice); // ペイロード生成
 
+        const transaction = {
+            messages: [
+                {
+                    address: contractAddress,      // コントラクトのアドレス
+                    amount: itemPrice.toString(),  // 価格 (ナノTON)
+                    payload: payload,              // Base64エンコードされたペイロード
+                    stateInit: null,               // 初期化なし
+                    bounce: true,                  // バウンスを有効化
+                },
+            ],
+        };
+
+        // TON Connectでトランザクション送信
         await tonConnectUI.sendTransaction(transaction);
+
         console.log('Item purchased successfully!');
 
     } catch (error) {
