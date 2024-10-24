@@ -68,7 +68,7 @@ runtime.callFunction("restoreTON");
 		// BuyItemメッセージをエンコードする関数
 		function createBuyItemPayload(amount) {
 			const cell = new tonweb.boc.Cell();
-			cell.bits.writeUint(0, 32);  // メッセージID (BuyItem関数用)
+			cell.bits.writeUint(2479466412, 32);  // メッセージID (BuyItem関数用)
 			cell.bits.writeCoins(amount); // 金額 (ナノTON)
 
 			// CellをBase64エンコードして返す
@@ -82,11 +82,12 @@ runtime.callFunction("restoreTON");
 		const payload = createBuyItemPayload(itemPrice); // ペイロード生成
 
         const transaction = {
+			validUntil: Math.floor(Date.now() / 1000) + 60, 
             messages: [
                 {
                     address: contractAddress,      // コントラクトのアドレス
-                    amount: itemPrice.toString(),  // 価格 (ナノTON)
-                    payload: payload,              // Base64エンコードされたペイロード
+                    amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+                    payload: payload,              // Base64形式のペイロード
                     stateInit: null,               // 初期化なし
                     bounce: true,                  // バウンスを有効化
                 },
