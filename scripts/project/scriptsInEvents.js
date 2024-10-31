@@ -58,49 +58,63 @@ runtime.callFunction("restoreTON");
 
 	async Sdk_Event6_Act1(runtime, localVars)
 	{
+const contractAddress = 'EQDGxETg0oyRuVhwZiXk-bjR1UwAUn4LqUSaXEa1w3yDbZSO';
+const itemPrice = '0.023'; // TON価格
 
-		// TonWebの初期化
-		const tonweb = new TonWeb();
-
-		const contractAddress = 'EQDGxETg0oyRuVhwZiXk-bjR1UwAUn4LqUSaXEa1w3yDbZSO';
-		const itemPrice = 23000000; // TON価格
-
-		// BuyItemメッセージをエンコードする関数
-		function createBuyItemPayload(amount) {
-			const cell = new tonweb.boc.Cell();
-			cell.bits.writeUint(2479466412, 32);  // メッセージID (BuyItem関数用)
-			cell.bits.writeCoins(amount); // 金額 (ナノTON)
-
-			// CellをBase64エンコードして返す
-			return cell.toBoc().toString('base64');
-		}
-
-
-
-		// コントラクトに0.023 TONを送信してアイテムを購入
-	try {
-		const payload = createBuyItemPayload(itemPrice); // ペイロード生成
-
+// コントラクトに0.023 TONを送信してアイテムを購入
+    try {
         const transaction = {
-			validUntil: Math.floor(Date.now() / 1000) + 60, 
-            messages: [
-                {
-                    address: contractAddress,      // コントラクトのアドレス
-                    amount: itemPrice.toString(),  // 価格 (ナノTON単位)
-                    payload: payload,              // Base64形式のペイロード
-                    stateInit: null,               // 初期化なし
-                    bounce: true,                  // バウンスを有効化
-                },
-            ],
+            to: contractAddress,           // コントラクトのアドレス
+            value: toNano(itemPrice),      // 商品の価格 (ナノTON)
+            stateInit: null,
+            bounce: true,
         };
 
-        // TON Connectでトランザクション送信
         await tonConnectUI.sendTransaction(transaction);
-
         console.log('Item purchased successfully!');
+
+        // 購入番号を取得（例: 1番目の購入者）
+        const sendCoins = SendCoins.fromAddress(Address.parse(contractAddress));
+        const purchaseIndex = await sendCoins.getPurchaseIndex(1n);
+        console.log(`Your purchase index: ${purchaseIndex}`);
 
     } catch (error) {
         console.error('Failed to purchase item:', error);
+    }
+	},
+
+	async Sdk_Event7_Act1(runtime, localVars)
+	{
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+
+		const contractAddress = 'kQBdCukjgAO91eFigxNPGRDhW-GqX6PEvzKIR2ouBUL_HOsx';
+		
+		
+ 		try {
+        // ウォレット接続チェック
+        const providerState = await tonConnectUI.getWallet();
+        if (!providerState) {
+            throw new Error('No wallet connected. Please connect your wallet.');
+        }
+
+        // ウォレット経由でコントラクトを開く
+        const sendCoins = tonweb.openContract(SendCoins.fromAddress(contractAddress));
+
+        // 残高を取得
+        const balance = await sendCoins.getBalance();
+        console.log(`Contract balance: ${balance}`);
+
+        // すべてのアイテムを取得
+        const allItems = await sendCoins.getAllItems();
+        console.log(`All items: ${JSON.stringify(allItems)}`);
+
+        // 特定の購入番号を取得
+        const purchaseIndex = await sendCoins.getPurchaseIndex(1n);
+        console.log(`Your purchase index: ${purchaseIndex}`);
+
+    } catch (error) {
+        console.error('Error during contract call:', error);
     }
 	}
 
