@@ -58,32 +58,160 @@ runtime.callFunction("restoreTON");
 
 	async Sdk_Event6_Act1(runtime, localVars)
 	{
-const contractAddress = 'EQDGxETg0oyRuVhwZiXk-bjR1UwAUn4LqUSaXEa1w3yDbZSO';
-const itemPrice = '0.023'; // TON価格
-
-// コントラクトに0.023 TONを送信してアイテムを購入
-    try {
-        const transaction = {
-            to: contractAddress,           // コントラクトのアドレス
-            value: toNano(itemPrice),      // 商品の価格 (ナノTON)
-            stateInit: null,
-            bounce: true,
-        };
-
-        await tonConnectUI.sendTransaction(transaction);
-        console.log('Item purchased successfully!');
-
-        // 購入番号を取得（例: 1番目の購入者）
-        const sendCoins = SendCoins.fromAddress(Address.parse(contractAddress));
-        const purchaseIndex = await sendCoins.getPurchaseIndex(1n);
-        console.log(`Your purchase index: ${purchaseIndex}`);
-
-    } catch (error) {
-        console.error('Failed to purchase item:', error);
-    }
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+		
+		const contractAddress = 'EQBtviDFLK1P61O-Fx5gk1wOGVLmKvqyY_PxCdVd8XHwAg2W';
+		const itemPrice = 23000000; // TON価格
+		
+		
+		// コントラクトに0.023 TONを送信してアイテムを購入
+		try {
+			const transaction = {
+				validUntil: Math.floor(Date.now() / 1000) + 60, 
+				messages: [
+					{
+						address: contractAddress,      // コントラクトのアドレス
+						amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+					}
+				]
+			};
+		
+			// TON Connectでトランザクション送信
+			await tonConnectUI.sendTransaction(transaction);
+		
+			console.log('Item purchased successfully!');
+		
+		} catch (error) {
+			console.error('Failed to purchase item:', error);
+		}
 	},
 
 	async Sdk_Event7_Act1(runtime, localVars)
+	{
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+		
+		const contractAddress = 'EQBtviDFLK1P61O-Fx5gk1wOGVLmKvqyY_PxCdVd8XHwAg2W';
+		const itemPrice = 23000000; // TON価格
+		
+		
+		// コントラクトに0.023 TONを送信してアイテムを購入
+		try {
+			const transaction = {
+				validUntil: Math.floor(Date.now() / 1000) + 60, 
+				messages: [
+					{
+						address: contractAddress,      // コントラクトのアドレス
+						amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+					}
+				]
+			};
+		
+			// TON Connectでトランザクション送信
+			await tonConnectUI.sendTransaction(transaction);
+		
+			console.log('Item purchased successfully!');
+		
+		} catch (error) {
+			console.error('Failed to purchase item:', error);
+		}
+	},
+
+	async Sdk_Event8_Act1(runtime, localVars)
+	{
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+		
+		const contractAddress = 'EQBtviDFLK1P61O-Fx5gk1wOGVLmKvqyY_PxCdVd8XHwAg2W';
+		const itemPrice = 23000000; // TON価格
+		
+		
+		// コントラクトに0.023 TONを送信してアイテムを購入
+		try {
+			const transaction = {
+				validUntil: Math.floor(Date.now() / 1000) + 60, 
+				messages: [
+					{
+						address: contractAddress,      // コントラクトのアドレス
+						amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+					}
+				]
+			};
+		
+			// TON Connectでトランザクション送信
+			await tonConnectUI.sendTransaction(transaction);
+		
+			console.log('Item purchased successfully!');
+		
+		} catch (error) {
+			console.error('Failed to purchase item:', error);
+		}
+	},
+
+	async Sdk_Event9_Act1(runtime, localVars)
+	{
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+		
+		const contractAddress = 'EQBtviDFLK1P61O-Fx5gk1wOGVLmKvqyY_PxCdVd8XHwAg2W';
+		const itemPrice = 23000000; // TON価格
+		
+		
+		// コントラクトに0.023 TONを送信してアイテムを購入
+		try {
+			const transaction = {
+				validUntil: Math.floor(Date.now() / 1000) + 60, 
+				messages: [
+					{
+						address: contractAddress,      // コントラクトのアドレス
+						amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+					}
+				]
+			};
+		
+			// TON Connectでトランザクション送信
+			await tonConnectUI.sendTransaction(transaction);
+		
+			console.log('Item purchased successfully!');
+		
+		} catch (error) {
+			console.error('Failed to purchase item:', error);
+		}
+	},
+
+	async Sdk_Event10_Act1(runtime, localVars)
+	{
+		// TonWebの初期化
+		const tonweb = new TonWeb();
+		
+		const contractAddress = 'EQBtviDFLK1P61O-Fx5gk1wOGVLmKvqyY_PxCdVd8XHwAg2W';
+		const itemPrice = 23000000; // TON価格
+		
+		
+		// コントラクトに0.023 TONを送信してアイテムを購入
+		try {
+			const transaction = {
+				validUntil: Math.floor(Date.now() / 1000) + 60, 
+				messages: [
+					{
+						address: contractAddress,      // コントラクトのアドレス
+						amount: itemPrice.toString(),  // 価格 (ナノTON単位)
+					}
+				]
+			};
+		
+			// TON Connectでトランザクション送信
+			await tonConnectUI.sendTransaction(transaction);
+		
+			console.log('Item purchased successfully!');
+		
+		} catch (error) {
+			console.error('Failed to purchase item:', error);
+		}
+	},
+
+	async Sdk_Event11_Act1(runtime, localVars)
 	{
 		// TonWebの初期化
 		const tonweb = new TonWeb();

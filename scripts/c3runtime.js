@@ -5276,8 +5276,31 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (("Hi, [u]" + v0.GetValue()) + "[/u]!");
 		},
-		() => 300,
+		() => 10,
+		() => 11,
+		() => 20,
 		() => 1,
+		() => 21,
+		() => 30,
+		() => 2,
+		() => 31,
+		() => 40,
+		() => 3,
+		() => 41,
+		() => 50,
+		() => 4,
+		() => 51,
+		() => 60,
+		() => 5,
+		() => 61,
+		() => 70,
+		() => 6,
+		() => 71,
+		() => 80,
+		() => 7,
+		() => 81,
+		() => 90,
+		() => 8,
 		() => "guiCalc",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5324,7 +5347,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (and("ENERGY: [color=#6fc723]", n0.ExpInstVar()) + "[/color] per day");
 		},
-		() => 2,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -5521,14 +5543,13 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(0);
 		},
-		() => 60,
 		() => 120,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0(0) / 4);
 		},
-		() => 90,
 		() => 240,
+		() => 300,
 		() => -90,
 		p => {
 			const n0 = p._GetNode(0);
@@ -5576,7 +5597,6 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 8);
 		},
-		() => 3,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -5593,7 +5613,6 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => n0.ExpObject(v1.GetValue(), 4);
 		},
-		() => 4,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 2);
@@ -5660,11 +5679,9 @@ self.C3_ExpressionFuncs = [
 			const v15 = p._GetNode(15).GetVar();
 			return () => (and((and((((((and((((and("[size=36][b]", n0.ExpObject(v1.GetValue(), 0)) + "[/b][/size]") + "\n") + "[color=#6fc723]"), (Math.round(multiply(100, divide(n2.ExpObject(v3.GetValue(), 3), Math.pow(10, (3 * Math.floor((Math.floor(f4(n5.ExpObject(v6.GetValue(), 3))) / 3))))))) / 100)) + " ") + f7(n8.ExpObject(((3 * Math.floor((Math.floor(f9(n10.ExpObject(v11.GetValue(), 3))) / 3)))).toString()), 0, "|")) + "[/color]") + "\n") + "[size=32]+ "), n12.ExpObject(v13.GetValue(), 4)) + " "), n14.ExpObject(v15.GetValue(), 5)) + "[/size]");
 		},
-		() => 6,
 		() => "upgrade unlocked!",
 		() => 0.7,
 		() => "guiBtns",
-		() => 10,
 		() => "pulse",
 		() => 0.25,
 		() => "tiltBtn",
@@ -5793,7 +5810,6 @@ self.C3_ExpressionFuncs = [
 			return () => (((and((("[size=48]Offline earnings" + "\n") + "[iconoffsety=12%][icon=0][/iconoffsety][color=#ffb62a] "), (Math.round((100 * (v0.GetValue() / Math.pow(10, (3 * Math.floor((Math.floor(f1(v2.GetValue())) / 3))))))) / 100)) + " ") + f3(n4.ExpObject(((3 * Math.floor((Math.floor(f5(v6.GetValue())) / 3)))).toString()), 0, "|")) + "[/color][/size]");
 		},
 		() => "btntake",
-		() => 7,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -5816,10 +5832,14 @@ self.C3_ExpressionFuncs = [
 		() => "NewWindow",
 		() => "You got 10 000 coins!",
 		() => 500,
-		() => "https://aaaaa",
-		() => 11,
-		() => 20,
-		() => "https://bbb",
+		() => 7500,
+		() => 7501,
+		() => 23000,
+		() => 23001,
+		() => 42000,
+		() => "https://manual.com",
+		() => "https://sharktap.github.io/love_time.html",
+		() => "https://sharktap.github.io/watch_secret.html",
 		() => "Effects",
 		() => "2xTimer",
 		() => "3x mode enabled!",
@@ -5830,7 +5850,6 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => add(n0.ExpObject(), multiply(f1(2.5, 5), f2((-1), 1)));
 		},
-		() => 80,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -5866,6 +5885,15 @@ self.C3_ExpressionFuncs = [
 			return () => f0(99999999);
 		},
 		() => "Leaderboard",
+		() => 3000,
+		() => 7000,
+		() => 12000,
+		() => 16000,
+		() => 20000,
+		() => 25000,
+		() => 30000,
+		() => 40000,
+		() => 50000,
 		() => "https://yahoo.co.jp",
 		() => "window.purchaseIndex",
 		() => "GameData",
